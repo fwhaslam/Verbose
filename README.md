@@ -23,9 +23,9 @@ against code which is fundamentally broken.
 
 Assertion Coverage are the parts of your test which check that variables in the system 
 have been changed correctly, which includes NOT changing variables that should remain 
-the same.  Checking that things have NOT changed is critical to good assertion coverage.  
-This type of testing is difficult to measure.  There are few automation tools which even 
-try to measure Assertion Coverage.  
+the same.  Checking that things have NOT changed is critical to good assertion 
+coverage.  This type of testing is difficult to measure. There are few automation tools 
+which even try to measure Assertion Coverage.  
 
 Perfect assertion coverage would mean checking EVERY variable in the system after 
 any method invocation.  Part of the power of Functional Programming is that it severely 
@@ -50,8 +50,8 @@ be recursed for full representation, but be careful of circular references.
 
 The second requirement is more difficult.  There are currently no Visual Studio tools which 
 allow for copy+paste of formated strings into quotes.  INSTEAD the MoreAssert.StringsAreEqual() 
-method will dump a completely formatted version of the 'actual' value to the console.
-This 'dump' is formatted with quotes, line breaks and string joins.  You can copy and 
+method will dump a completely formatted version of the 'actual' value to the console. This 
+'dump' is formatted with quotes, line breaks and string joins.  You can copy and 
 paste this object into the 'expect' part of your assertion.
 
 THe third requirement is addressed by the MoreAsserts.StringsAreEqual() method.  When the 
