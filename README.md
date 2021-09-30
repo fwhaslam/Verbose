@@ -7,13 +7,13 @@ Tools to support Verbose Assertion in C-Sharp.
 Verbose Assertion is a technique which provides a huge speedup in test construction.
 
 The key is to represent all the fields of a class as a single string.  This string can 
-be dropped into a single assdertion which checks ALL fields in the object. When properly 
+be dropped into a single assertion which checks ALL fields in the object. When properly 
 supported, Verbose Assertion will let you rapidly buid Assertion Coverage.
 
 
 ## What is Assertion Coverage ?
 
-Assertion Coverage is the missing metric, the thing which *actually* guarantees that your 
+Assertion Coverage is the missing metric, the thing which **actually** guarantees that your 
 code is correct.  
 
 Most managers are focused on Code Coverage.  This metric is easy to measure and check,
