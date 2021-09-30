@@ -6,9 +6,9 @@ Tools to support Verbose Assertion in C-Sharp.
 
 Verbose Assertion is a technique which provides a huge speedup in test construction.
 
-The key is to represent all the externally accessible fields of a class as a single string.  
-This string can be used in a single assertion which checks ALL fields in the object.  
-When properly supported, verbose assertion can raise assertion coverage to record highs.
+The key is to represent all the fields of a class as a single string.  This string can 
+be dropped into a single assdertion which checks ALL fields in the object. When properly 
+supported, Verbose Assertion will let you rapidly buid Assertion Coverage.
 
 
 ## What is Assertion Coverage ?
@@ -22,9 +22,10 @@ just says if a line was invoked, not if the line was correct.  You can have 100%
 against code which is fundamentally broken.
 
 Assertion Coverage are the parts of your test which check that variables in the system 
-have been changed correctly, or NOT changed correctly.  Checking that things have NOT 
-changed is critical to good assertion coverage.  This type of testing is difficult to 
-measure.  There are few automation tools which even try to measure Assertion Coverage.  
+have been changed correctly, which includes NOT changing variables that should remain 
+the same.  Checking that things have NOT changed is critical to good assertion coverage.  
+This type of testing is difficult to measure.  There are few automation tools which even 
+try to measure Assertion Coverage.  
 
 Perfect assertion coverage would mean checking EVERY variable in the system after 
 any method invocation.  Part of the power of Functional Programming is that it severely 
