@@ -88,5 +88,14 @@ namespace Verbose.Utility {
 
 		}
 
+		// Linq Placeholders for net4.7.1
+
+		static public T First<T>(ICollection<T> list) {
+			return list.ToList().First();
+		}
+
+		static public T Last<T>(ICollection<T> list) {
+			return list.ToList().Last();
+		}
 	}
 }

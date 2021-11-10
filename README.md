@@ -17,7 +17,7 @@ Assertion Coverage is the missing metric, the thing which **actually** guarantee
 code is correct.  
 
 Most managers are focused on Code Coverage.  This metric is easy to measure and check,
-so is often used as a proxy of good test coverage.  But as all coders know, code coverage 
+so is often used as a proxy of assertion coverage.  But as all coders know, code coverage 
 just says if a line was invoked, not if the line was correct.  You can have 100% coverage 
 against code which is fundamentally broken.
 

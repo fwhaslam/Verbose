@@ -51,7 +51,7 @@ namespace Verbose.Utility {
 			work.AnInt = 123;
 			work.AChar = 'X';
 
-			MoreAsserts.StringsAreEqual("{\n"+
+			VerboseAsserts.StringsAreEqual("{\n"+
     				"  \"AChar\": \"X\",\n"+
     				"  \"AnInt\": 123,\n"+
     				"  \"AString\": \"some-value\"\n"+

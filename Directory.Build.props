@@ -1,0 +1,10 @@
+<Project>
+
+  <!-- properties shared by all projects in solution -->
+
+  <PropertyGroup>
+    <Version>0.0.2-alpha</Version>
+    <ProjectKey>Verbose</ProjectKey>
+  </PropertyGroup>
+
+</Project>

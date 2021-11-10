@@ -16,7 +16,7 @@ namespace Verbose.Utility {
 			var result = new StringDiff();
 
 			/// assertion
-			MoreAsserts.StringsAreEqual( "", TestUtils.AsPrettyString( result ) );
+			VerboseAsserts.StringsAreEqual( "", TestUtils.AsPrettyString( result ) );
 		}
 	}
 }
