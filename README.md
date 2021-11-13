@@ -16,21 +16,18 @@ supported, Verbose Assertion will let you rapidly buid Assertion Coverage.
 Assertion Coverage is the missing metric, the thing which **actually** guarantees that your 
 code is correct.  
 
-Most managers are focused on Code Coverage.  This metric is easy to measure and check,
-so is often used as a proxy of assertion coverage.  But as all coders know, code coverage 
-just says if a line was invoked, not if the line was correct.  You can have 100% coverage 
-against code which is fundamentally broken.
+Most managers are focused on Code Coverage (CC).  This metric is easy to measure so is often used 
+as a proxy for assertion coverage.  But as all coders know, code coverage 
+just says if a line was invoked, not if the line was correct.  It is easy to have fundamentally 
+broken code with 100% CC.
 
-Assertion Coverage are the parts of your test which check that variables in the system 
-have been changed correctly, which includes NOT changing variables that should remain 
-the same.  Checking that things have NOT changed is critical to good assertion 
-coverage.  This type of testing is difficult to measure. There are few automation tools 
-which even try to measure Assertion Coverage.  
+Assertion Coverage (AC) is the part of your test that checks to see if variables were changed 
+correctly.  This includes asserting that most of your variables did NOT change.  This type 
+of testing is difficult to measure.  I don't know of any tools that actually evaluate AC.
 
-Perfect assertion coverage would mean checking EVERY variable in the system after 
-any method invocation.  Part of the power of Functional Programming is that it severely 
-restricts which objects can be affected by some method, consequently reducing the space 
-which needs to be checked for perfect Assertion Coverage.
+If you are trying to achieve high Assertion Coverage (AC), then consider the benefits of the 
+Functional Programming (FP) paradigm.  Part of the power of FP is that it restricts what 
+can be changed by a single method.  This reduces the space you need to verify for AC.
 
 
 ## How does the Verbose toolkit help me?
@@ -44,9 +41,9 @@ In order to perform verbose assertion, you need three things:
 1. Reporting on string differences which a human can understand and use.
 
 
-The first requirement can be fulfilled with JSON and YAML tools.  You can also construct 
+The first requirement can be fulfilled with JSON or YAML tools.  You can also construct 
 your own 'ToDisplay()' methods to customize the representation.  These methods can also 
-be recursed for full representation, but be careful of circular references.
+be recursed for full representation, but beware of circular references.
 
 The second requirement is more difficult.  There are currently no Visual Studio tools which 
 allow for copy+paste of formated strings into quotes.  INSTEAD the MoreAssert.StringsAreEqual() 
@@ -72,6 +69,8 @@ What I want to Add ?
 1. JSON and YAML specific versions of this utility reuse the existing reporting tools.
 
 1. Create another 'SmartPaster' style option which will paste multiline strings without going to 'literal mode'.
+
+1. Build evaulators for C# code, to investigate the variable space underlying AC.
 
 
 ## What kind of pasting am I talking about?

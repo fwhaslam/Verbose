@@ -7,7 +7,7 @@ using System.Text;
 namespace Verbose.Utility {
 
 	[TestClass]
-	class StringDiffTest {
+	public class StringDiffTest {
 
 		[TestMethod]
 		public void _constructor() {
@@ -16,7 +16,17 @@ namespace Verbose.Utility {
 			var result = new StringDiff();
 
 			/// assertion
-			VerboseAsserts.StringsAreEqual( "", TestUtils.AsPrettyString( result ) );
+			VerboseAsserts.StringsAreEqual( "{\n"+
+				"  \"Actual\": null,\n"+
+				"  \"ADisplay\": null,\n"+
+				"  \"Cut\": 0,\n"+
+				"  \"Diff\": 0,\n"+
+				"  \"EDisplay\": null,\n"+
+				"  \"Expect\": null,\n"+
+				"  \"Explain\": null,\n"+
+				"  \"Pointer\": null,\n"+
+				"  \"Row\": 0\n"+
+				"}", VerboseTools.AsPrettyString( result ) );
 		}
 	}
 }

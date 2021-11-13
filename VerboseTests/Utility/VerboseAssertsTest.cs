@@ -16,22 +16,67 @@ namespace Verbose.Utility {
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(AssertFailedException))]
+		[ExpectedException(typeof(VerboseAssertionException))]
 		public void StringsAreEqual_expectNull() {
 			VerboseAsserts.StringsAreEqual( null, "check" );
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(AssertFailedException))]
+		[ExpectedException(typeof(VerboseAssertionException))]
 		public void StringsAreEqual_actualNull() {
 			VerboseAsserts.StringsAreEqual( "check", null );
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(AssertFailedException))]
+		[ExpectedException(typeof(VerboseAssertionException))]
 		public void StringsAreEqual_notEquals() {
 			VerboseAsserts.StringsAreEqual( "check", "check false" );
 		}
 
+	
+		//[TestMethod]
+		//public void StringLinesAreEqual_arrays_success() {
+
+		//	string[] first = {"one","two" };
+		//	string[] second = {"one","two"};
+
+		//	VerboseAsserts.StringsAreEqual( first, second );
+		//}
+
+		//[TestMethod]
+		//[ExpectedException(typeof(AssertFailedException))]
+		//public void StringLinesAreEqual_arrays_failure() {
+
+		//	string[] first = {"one","two" };
+		//	string[] second = {"one","two", "three" };
+
+		//	VerboseAsserts.StringsAreEqual( first, second );
+		//}
+
+		//[TestMethod]
+		//public void CompareStringLines_success() {
+
+		//	string[] first = {"one","two" };
+		//	string[] second = {"one","two"};
+
+		//	// invocation
+		//	string result = CompareStringLines( first, second );
+
+		//	// assertions
+		//	IsNull( result );
+		//}
+
+		//[TestMethod]
+		//public void CompareStringLines_fail_forExpectLength() {
+
+		//	string[] first = {"one","two", "three" };
+		//	string[] second = {"one","two" };
+
+		//	// invocation
+		//	string result = CompareStringLines( first, second );
+
+		//	// assertions
+		//	AreEqual( "Strings do not match at line[2]\nOne space is larger than the other", result );
+		//}
 	}
 }

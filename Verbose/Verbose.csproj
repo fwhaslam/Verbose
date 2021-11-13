@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net4.7.1;net5.0</TargetFrameworks>
+    <!--<TargetFrameworks>net4.7.1;net5.0</TargetFrameworks>-->
     <ProjectName>Verbose</ProjectName>
-    <!--<Version>0.0.1-alpha</Version>-->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Fred Haslam</Authors>
     <Company>Fred Haslam</Company>
@@ -16,14 +15,12 @@
     <UserSecretsId>70edb541-7ee0-4461-bca7-6e057db968e4</UserSecretsId>
   </PropertyGroup>
 
+  <!--
+      Verbose is designed to be used in the test framework.
+      This includes Test-Only dependencies.
+  -->
   <ItemGroup>
-    <PackageReference Include="MSTest.TestAdapter" Version="2.2.5" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.2.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
-
-  <!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="VerboseDeployNugetPackage.bat" />
-  </Target>-->
 
 </Project>

@@ -1,20 +1,20 @@
 # Tasks
 ============
 
-[done] dual build to .net50
+[done] fixed dependencies, removed test dependencies from primary package
+* [done] reduced test dependencies to minimal.
 
-[done] scripts to publish to local Nuget Repository
+[done] remove MSTest dependency from primary, should be as simple as adding a new Exception
 
-[done] shared solution properties in Directory.Build.props
+[done] Finish Collection asserts + tests
 
-[done] script publish version as 'prerelease' with timestamp, 
-    which *should* permit nuget tooling to select the latest prerelease version
+add vertical ruler to guide code size ( need to find settings.json )
 
-Finish Collection asserts + tests
- 
+unify with line based comparitor, may be easier to maintain and comprehend
+
 Finish GenericCollection asserts + tests
 
-scripts to work with developer specific properties
+scripts to work with developer specific properties ( local filepaths et al )
 
 
 # Objectives
@@ -28,3 +28,7 @@ create version that leverages Json
 
 create version that leverages Yaml
 
+create version that uses NO serialization tool
+
+Start on measure assertion coverage:
+* tooling to review C# methods to determine the variable space that a method can access.

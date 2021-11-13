@@ -15,7 +15,7 @@ namespace Verbose.Utility {
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(AssertFailedException))]
+		[ExpectedException(typeof(VerboseAssertionException))]
 		public void StartsWith_false() {
 			StringAsserts.StartsWith("check","false check");
 		}
@@ -26,7 +26,7 @@ namespace Verbose.Utility {
 		}
 		
 		[TestMethod]
-		[ExpectedException(typeof(AssertFailedException))]
+		[ExpectedException(typeof(VerboseAssertionException))]
 		public void EndsWith_false() {
 			StringAsserts.EndsWith("check","check false");
 		}
@@ -37,7 +37,7 @@ namespace Verbose.Utility {
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(AssertFailedException))]
+		[ExpectedException(typeof(VerboseAssertionException))]
 		public void Contains_false() {
 			StringAsserts.Contains( "check", "false false" );
 		}
@@ -48,7 +48,7 @@ namespace Verbose.Utility {
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(AssertFailedException))]
+		[ExpectedException(typeof(VerboseAssertionException))]
 		public void NotContains_false() {
 			StringAsserts.NotContains( "check", "false check false" );
 		}
@@ -61,7 +61,7 @@ namespace Verbose.Utility {
 
 		
 		[TestMethod]
-		[ExpectedException(typeof(AssertFailedException))]
+		[ExpectedException(typeof(VerboseAssertionException))]
 		public void Empty_false() {
 			StringAsserts.Empty( "false" );
 		}
@@ -72,13 +72,13 @@ namespace Verbose.Utility {
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(AssertFailedException))]
+		[ExpectedException(typeof(VerboseAssertionException))]
 		public void NotEmpty_false_forNull() {
 			StringAsserts.NotEmpty((string)null);
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(AssertFailedException))]
+		[ExpectedException(typeof(VerboseAssertionException))]
 		public void NotEmpty_false_forBlank() {
 			StringAsserts.NotEmpty("");
 		}
