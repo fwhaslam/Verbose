@@ -1,4 +1,7 @@
-﻿
+﻿//
+//	Copyright 2021 Frederick William Haslam born 1962 in the USA
+//
+
 
 namespace Verbose.Utility {
 
@@ -14,6 +17,122 @@ namespace Verbose.Utility {
 
 		List<string> MakeList(params string[] args) {
 			return new List<string>(args);
+		}
+
+//======================================================================================================================
+
+		[TestMethod]
+		public void IsEmpty() {
+
+			List<string> list = new List<string>();
+
+			CollectionAsserts.IsEmpty( list );
+		}
+				
+		[TestMethod]
+		[ExpectedException(typeof(VerboseAssertionException))]
+		public void IsEmpty_false() {
+
+			List<string> list = new List<string>();
+			list.Add("hi");
+
+			CollectionAsserts.IsEmpty( list );
+		}
+
+
+		[TestMethod]
+		public void IsNotEmpty() {
+
+			List<string> list = new List<string>();
+			list.Add("hi");
+
+			CollectionAsserts.IsNotEmpty( list );
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(VerboseAssertionException))]
+		public void IsNotEmpty_false() {
+
+			List<string> list = new List<string>();
+
+			CollectionAsserts.IsNotEmpty( list );
+		}
+
+		[TestMethod]
+		public void IsFirst() {
+
+			List<string> list = MakeList( "A", "B", "C" );
+
+			CollectionAsserts.IsFirst( "A" , list);
+
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(VerboseAssertionException))]
+		public void IsFirst_false_empty() {
+			
+			List<string> list = MakeList( "A", "B", "C" );
+
+			CollectionAsserts.IsFirst( null, list);
+
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(VerboseAssertionException))]
+		public void IsFirst_false_outOfOrder() {
+			
+			List<string> list = MakeList( "A", "B", "C" );
+
+			CollectionAsserts.IsFirst( "B", list);
+
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(VerboseAssertionException))]
+		public void IsFirst_false_notAMember() {
+			
+			List<string> list = MakeList( "A", "B", "C" );
+
+			CollectionAsserts.IsFirst( "D", list);
+
+		}
+
+		[TestMethod]
+		public void IsLast() {
+			
+			List<string> list = MakeList( "A", "B", "C" );
+
+			CollectionAsserts.IsLast( "C", list);
+
+		}
+		
+		[TestMethod]
+		[ExpectedException(typeof(VerboseAssertionException))]
+		public void IsLast_false_empty() {
+			
+			List<string> list = MakeList( "A", "B", "C" );
+
+			CollectionAsserts.IsLast( null, list);
+
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(VerboseAssertionException))]
+		public void IsLast_false_outOfOrder() {
+			
+			List<string> list = MakeList( "A", "B", "C" );
+
+			CollectionAsserts.IsLast( "B", list);
+
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(VerboseAssertionException))]
+		public void IsLast_false_notAMember() {
+			
+			List<string> list = MakeList( "A", "B", "C" );
+
+			CollectionAsserts.IsLast( "D", list);
 		}
 
 //======================================================================================================================
@@ -241,45 +360,6 @@ namespace Verbose.Utility {
 			List<string> list = MakeList( "A", "B", "C" );
 
 			CollectionAsserts.NotContains( MakeList( "A", "B", "C" ), list);
-		}
-
-//======================================================================================================================
-
-		[TestMethod]
-		public void Empty() {
-
-			List<string> list = new List<string>();
-
-			CollectionAsserts.Empty( list );
-		}
-				
-		[TestMethod]
-		[ExpectedException(typeof(VerboseAssertionException))]
-		public void Empty_false() {
-
-			List<string> list = new List<string>();
-			list.Add("hi");
-
-			CollectionAsserts.Empty( list );
-		}
-
-
-		[TestMethod]
-		public void NotEmpty() {
-
-			List<string> list = new List<string>();
-			list.Add("hi");
-
-			CollectionAsserts.NotEmpty( list );
-		}
-
-		[TestMethod]
-		[ExpectedException(typeof(VerboseAssertionException))]
-		public void NotEmpty_false() {
-
-			List<string> list = new List<string>();
-
-			CollectionAsserts.NotEmpty( list );
 		}
 
 //======================================================================================================================

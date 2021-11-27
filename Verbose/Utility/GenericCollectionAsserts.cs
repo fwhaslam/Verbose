@@ -10,6 +10,7 @@ namespace Verbose.Utility {
 	using System.Linq;
 
 	using static Verbose.Utility.VerboseSupport;
+	using static Verbose.Utility.VerboseTools;
 
 	/// <summary>
 	/// String and collection oriented assertions.  
@@ -17,100 +18,185 @@ namespace Verbose.Utility {
 	/// </summary>
 	public class GenericCollectionAsserts {
 
-		//====================
+		//=====================
 		// generic collections
-		//====================
-				
-		static public void Empty<T>( ICollection<T> actual ) {
+		//=====================
+
+		static public void IsEmpty<T>( ICollection<T> actual ) {
 			if (actual!=null && actual.Count>0 ) {
 				VerboseFail("Collection is not empty");
 			}
 		}
 
-		static public void NotEmpty<T>( ICollection<T> actual ) {
+		static public void IsNotEmpty<T>( ICollection<T> actual ) {
 			if (actual==null) VerboseFail("Collection is null");
 			if (actual.Count==0) VerboseFail("Collection is empty");
 		}
 
-
 		// generic collections single value
-		//=================================
-
-		static public void First<T>( T expect, ICollection<T> actual ) where T:IComparable<T> {
-			//if (expect==null)) VerboseFail("Cannot expect null for First.");
+		//=========================
+		
+		static public void IsFirst<T>( T expect, ICollection<T> actual ) {
+			//if (expect==null)) Fail("Cannot expect null for First.");
 			if (actual==null || actual.Count==0) VerboseFail("Collection is empty, no first element.");
-			T check = actual.ToList().First();
-			if (expect==null && check==null) return;
-			if ( expect.CompareTo( check ) != 0 ) {
+			IEnumerator<T> loop = actual.GetEnumerator();
+			loop.MoveNext();	// shift to first
+			var check = loop.Current;
+			if ( !IsNullEquals( expect, check ) )  {
 				VerboseFail("First element of collection is not a match.");
 			}
 		}
 
-		static public void Last<T>( T expect, ICollection<T> actual ) where T:IComparable<T> {
-			//if (expect==null)) VerboseFail("Cannot expect null for Last.");
+		static public void IsLast<T>( T expect, ICollection<T> actual ) {
+			//if (expect==null)) Fail("Cannot expect null for Last.");
 			if (actual==null || actual.Count==0) VerboseFail("Collection is empty, no last element.");
-			T check = actual.ToList().Last();
-			if (expect==null && check==null) return;
-			if ( expect.CompareTo( check ) != 0 ) {
+			IEnumerator<T> loop = actual.GetEnumerator();
+			T check = default(T);
+			while (loop.MoveNext()) {	// shift to last
+				check = loop.Current;
+			}
+			if ( !IsNullEquals(expect,check) )  {
 				VerboseFail("Last element of collection is not a match.");
 			}
 		}
-
-		static public void Contains<T>( T expect, ICollection<T> actual ) where T:IComparable<T> {
-			//if (expect==null)) VerboseFail("Cannot expect null for Contains.");
+		
+		static public void Contains<T>( T expect, ICollection<T> actual ) {
+			//if (expect==null)) Fail("Cannot expect null for Contains.");
 			if (actual==null || actual.Count==0) VerboseFail("Collection is empty, no elements.");
-			foreach( T check in actual.ToList() ) {
-				if ( (expect==null && check==null) || expect.CompareTo( check ) == 0 ) return;	// match found
+			IEnumerator<T> loop = actual.GetEnumerator();
+			while ( loop.MoveNext() ) {
+				if ( expect.Equals( loop.Current ) ) return;		// found a match
 			}
 			VerboseFail("Collection does not contain element.");
 		}
 
-		static public void NotContains<T>( T expect, ICollection<T> actual ) where T:IComparable<T> {
-			//if (expect==null)) VerboseFail("Cannot expect null for Contains.");
+		static public void NotContains<T>( T expect, ICollection<T> actual ) {
+			//if (expect==null)) Fail("Cannot expect null for NotContains.");
 			if (actual==null || actual.Count==0) VerboseFail("Collection is empty, no elements.");
-			foreach( T check in actual.ToList() ) {
-				if ( (expect==null && check==null) || expect.CompareTo( check ) == 0 )
-					VerboseFail("Collection contains element.");
+			IEnumerator loop = actual.GetEnumerator();
+			while ( loop.MoveNext() ) {
+				if ( expect.Equals( loop.Current ) ) VerboseFail("Collection contains element.");
 			}
 		}
-		
-		// generic collections multi value collection
-		//===========================================
 
+		// generic collections multi value collection
+		//===================================
+		
 		static public void StartsWith<T>( ICollection<T> expect, ICollection<T> actual ) {
-			VerboseFail("write me");
+
+			if ( expect==null || expect.Count==0 ) VerboseFail("Cannot expect with null or empty collection.");
+			if ( actual==null || actual.Count==0 ) VerboseFail("Collection is empty, no elements.");
+			if ( expect.Count > actual.Count ) VerboseFail("Expected collection is longer than actual collection.");
+
+			var loopA = actual.GetEnumerator();
+			var loopE = expect.GetEnumerator();
+			var index = 0;
+			while ( loopE.MoveNext() ) {
+				loopA.MoveNext();
+				if ( ! loopA.Current.Equals( loopE.Current ) ) VerboseFail("Elements stop matching at ["+index+"] position.");
+				index++;
+			}
 		}
 
 		static public void EndsWith<T>( ICollection<T> expect, ICollection<T> actual ) {
-			VerboseFail("write me");
+
+			if ( expect==null || expect.Count==0 ) VerboseFail("Cannot expect with null or empty collection.");
+			if ( actual==null || actual.Count==0 ) VerboseFail("Collection is empty, no elements.");
+			if ( expect.Count > actual.Count ) VerboseFail("Expected collection is longer than actual collection.");
+
+			int skip = actual.Count - expect.Count;
+
+			var loopA = actual.GetEnumerator();
+			var loopE = expect.GetEnumerator();
+
+			var index = 0;
+			for (;index<skip;index++) loopA.MoveNext();
+
+			while ( loopE.MoveNext() ) {
+				loopA.MoveNext();
+				if ( ! loopA.Current.Equals( loopE.Current ) ) {
+					VerboseFail("Elements stop matching at ["+index+"] position in actual.");
+				}
+				index++;
+			}
 		}
-					
+		
 		static public void Contains<T>( ICollection<T> expect, ICollection<T> actual ) {
-			VerboseFail("write me");
+//Console.Out.WriteLine("START");
+			if ( expect==null || expect.Count==0 ) VerboseFail("Cannot expect with null or empty collection.");
+			if ( actual==null || actual.Count==0 ) VerboseFail("Collection is empty, no elements.");
+
+			int elimit = expect.Count;
+			int alimit = actual.Count;
+			if ( elimit > alimit ) VerboseFail("Expected collection is longer than actual collection.");
+
+			var elist = new List<T>(expect);
+			var alist = new List<T>(actual);
+
+			int aIx=0,eIx=0,startA=0;
+			while ( eIx<elimit && aIx<alimit ) {
+//Console.Out.WriteLine("A["+aIx+"]="+alist[aIx]+" E["+eIx+"]="+elist[eIx]+"   eq="+ (elist[eIx]==alist[aIx]) );
+				if ( ! elist[eIx++].Equals( alist[aIx++] ) ) {
+					startA++;
+					eIx = 0;
+				}
+			}
+
+			// failed to find pattern
+			if (eIx<elimit) {
+				VerboseFail("Actual did not contain expected.");
+			}
 		}
 
-		static public void NotContains<T>(  ICollection<T> expect, ICollection<T> actual ) {
-			VerboseFail("write me");
+		static public void NotContains<T>( ICollection<T> expect, ICollection<T> actual ) {
+//Console.Out.WriteLine("START");
+			if ( expect==null || expect.Count==0 ) VerboseFail("Cannot expect with null or empty collection.");
+			if ( actual==null || actual.Count==0 ) VerboseFail("Collection is empty, no elements.");
+
+			int elimit = expect.Count;
+			int alimit = actual.Count;
+			if ( elimit > alimit ) VerboseFail("Expected collection is longer than actual collection.");
+
+			var elist = new List<T>(expect);
+			var alist = new List<T>(actual);
+
+			int aIx=0,eIx=0,startA=0;
+			while ( eIx<elimit && aIx<alimit ) {
+//Console.Out.WriteLine("A[" + aIx + "]=" + alist[aIx] + " E[" + eIx + "]=" + elist[eIx] + "   eq=" + (elist[eIx] == alist[aIx]));
+				if ( ! elist[eIx++].Equals( alist[aIx++] ) ) {
+					startA++;
+					eIx = 0;
+				}
+			}
+
+			// found the pattern
+			if (eIx>=elimit) {
+				VerboseFail("Actual does contain expected.");
+			}
 		}
 
-
-		// generic collections multi value params
-		//===========================================
+		
+		// collections multi value params :: NOTE that params are last in list, breaking the pattern
+		//===================================
 
 		static public void StartsWith<T>( ICollection<T> actual, params T[] expect ) {
-			VerboseFail("write me");
+			List<T> elist = new List<T>(expect);
+			StartsWith( elist, actual );
 		}
 
 		static public void EndsWith<T>( ICollection<T> actual, params T[] expect ) {
-			VerboseFail("write me");
+			List<T> elist = new List<T>(expect);
+			EndsWith( elist, actual );
 		}
-		
+
 		static public void Contains<T>( ICollection<T> actual, params T[] expect ) {
-			VerboseFail("write me");
+			List<T> elist = new List<T>(expect);
+			Contains( elist, actual );
 		}
 
 		static public void NotContains<T>( ICollection<T> actual, params T[] expect ) {
-			VerboseFail("write me");
+			List<T> elist = new List<T>(expect);
+			NotContains( elist, actual );
 		}
 
 	}

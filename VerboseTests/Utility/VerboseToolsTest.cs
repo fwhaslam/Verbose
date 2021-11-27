@@ -1,13 +1,13 @@
-﻿
+﻿//
+//	Copyright 2021 Frederick William Haslam born 1962 in the USA
+//
 
 namespace Verbose.Utility {
 
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-	using System;
-
 	using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
-
+	using static Verbose.Utility.VerboseAsserts;
 
 	public class TestMe {
 		public string AString {  get; set; }
@@ -21,14 +21,19 @@ namespace Verbose.Utility {
 		[TestMethod]
 		public void AsString() {
 
+			// preparation
 			TestMe work = new TestMe();
 			work.AString = "some-value";
 			work.AnInt = 123;
 			work.AChar = 'X';
 
-			Assert.AreEqual(
+			// invocation
+			var result = VerboseTools.AsString( work );
+
+			// assertions
+			AreEqual(
 				"{\"AChar\":\"X\",\"AnInt\":123,\"AString\":\"some-value\"}", 
-				VerboseTools.AsString(work) );
+				result );
 		}
 
 		[TestMethod]
@@ -36,9 +41,30 @@ namespace Verbose.Utility {
 
 			TestMe work = new TestMe();
 
-			Assert.AreEqual(
+			// invocation
+			var result = VerboseTools.AsString( work );
+
+			// assertions
+			AreEqual(
 				"{\"AChar\":\"\\u0000\",\"AnInt\":0,\"AString\":null}", 
-				VerboseTools.AsString(work) );		
+				result );		
+		}
+
+		[TestMethod]
+		public void ToString_object() {
+
+			TestMe work = new TestMe();
+			work.AString = "some-value";
+			work.AnInt = 123;
+			work.AChar = 'X';
+
+			// invocation
+			var result = VerboseTools.ToString( work );
+
+			// assertions
+			AreEqual(
+				"{\"AChar\":\"X\",\"AnInt\":123,\"AString\":\"some-value\"}", 
+				result );
 		}
 
 		
@@ -50,11 +76,44 @@ namespace Verbose.Utility {
 			work.AnInt = 123;
 			work.AChar = 'X';
 
-			VerboseAsserts.StringsAreEqual("{\n"+
+			// invocation
+			var result = VerboseTools.AsPrettyString( work );
+
+			// assertions
+			StringsAreEqual("{\n"+
     				"  \"AChar\": \"X\",\n"+
     				"  \"AnInt\": 123,\n"+
     				"  \"AString\": \"some-value\"\n"+
-    				"}",  VerboseTools.AsPrettyString(work) );
+    				"}",  result );
+		}
+		
+		[TestMethod]
+		public void ToPrettyString() {
+
+			TestMe work = new TestMe();
+			work.AString = "some-value";
+			work.AnInt = 123;
+			work.AChar = 'X';
+
+			// invocation
+			var result = VerboseTools.ToPrettyString( work );
+
+			// assertions
+			StringsAreEqual("{\n"+
+    				"  \"AChar\": \"X\",\n"+
+    				"  \"AnInt\": 123,\n"+
+    				"  \"AString\": \"some-value\"\n"+
+    				"}",  result );
+		}
+
+		[TestMethod]
+		public void IsNullEquals_genericx() {
+
+			IsTrue( VerboseTools.IsNullEquals<string>( null, null ) );
+			IsTrue( VerboseTools.IsNullEquals<string>( "A", "A" ) );
+
+			IsFalse( VerboseTools.IsNullEquals<string>( null, "A" ) );
+			IsFalse( VerboseTools.IsNullEquals<string>( "A", null ) );
 		}
 
 	}

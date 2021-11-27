@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//
+//	Copyright 2021 Frederick William Haslam born 1962 in the USA
+//
 
 namespace Verbose.Utility {
+
+	using System;
 
 	/// <summary>
 	/// Thrown when a verbose assertion fails.

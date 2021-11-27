@@ -1,5 +1,6 @@
-﻿
-
+﻿//
+//	Copyright 2021 Frederick William Haslam born 1962 in the USA
+//
 
 namespace Verbose.Utility {
 
@@ -20,13 +21,13 @@ namespace Verbose.Utility {
 		// collections
 		//=====================
 
-		static public void Empty( ICollection actual ) {
+		static public void IsEmpty( ICollection actual ) {
 			if (actual!=null && actual.Count>0 ) {
 				VerboseFail("Collection is not empty");
 			}
 		}
 
-		static public void NotEmpty( ICollection actual ) {
+		static public void IsNotEmpty( ICollection actual ) {
 			if (actual==null) VerboseFail("Collection is null");
 			if (actual.Count==0) VerboseFail("Collection is empty");
 		}

@@ -16,9 +16,9 @@ supported, Verbose Assertion will let you rapidly buid Assertion Coverage.
 Assertion Coverage is the missing metric, the thing which **actually** guarantees that your 
 code is correct.  
 
-Most managers are focused on Code Coverage (CC).  This metric is easy to measure so is often used 
+Most managers are focused on Code Coverage (CC).  This metric is easy to measure, so it is often used 
 as a proxy for assertion coverage.  But as all coders know, code coverage 
-just says if a line was invoked, not if the line was correct.  It is easy to have fundamentally 
+just says that a line was touched, not that the line was correct.  It is easy to have fundamentally 
 broken code with 100% CC.
 
 Assertion Coverage (AC) is the part of your test that checks to see if variables were changed 
@@ -34,11 +34,11 @@ can be changed by a single method.  This reduces the space you need to verify fo
 
 In order to perform verbose assertion, you need three things:
 
-1. The ability to represent an object as a string ( JSON and YAML are both great for this )
+1. The ability to represent an object as a string. ( JSON and YAML are both great for this )
 
-1. The ability to copy+paste formatted strings into an assertion method
+1. The ability to copy+paste formatted strings into an assertion method.
 
-1. Reporting on string differences which a human can understand and use.
+1. Reporting on string differences formatted for human comprehension.
 
 
 The first requirement can be fulfilled with JSON or YAML tools.  You can also construct 
@@ -70,7 +70,7 @@ What I want to Add ?
 
 1. Create another 'SmartPaster' style option which will paste multiline strings without going to 'literal mode'.
 
-1. Build evaulators for C# code, to investigate the variable space underlying AC.
+1. Build evaulators for C# code, to analyze the variable space underlying AC.
 
 
 ## What kind of pasting am I talking about?

@@ -1,4 +1,8 @@
-﻿using System;
+﻿//
+//	Copyright 2021 Frederick William Haslam born 1962 in the USA
+//
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,6 +12,11 @@ using Newtonsoft.Json.Serialization;
 
 namespace Verbose.Utility {	
 
+
+	/// <summary>
+	/// Utilities to create testable verbose strings.
+	/// This is built over Newtonsoft.Json
+	/// </summary>
 	public class VerboseTools {
 
 		/// <summary>
@@ -42,6 +51,9 @@ namespace Verbose.Utility {
 				.SerializeObject(what, new JsonSerializerSettings { ContractResolver = new OrderedContractResolver() })
 				.Replace("\r","");
 		}
+		static public string ToString( Object what ) {
+			return AsString( what );
+		}
 
 
 		/// <summary>
@@ -57,7 +69,22 @@ namespace Verbose.Utility {
 				// no line-feeds, always simple carriage returns
 				.Replace("\r","");
 		}
+		static public string ToPrettyString( Object what ) {
+			return AsPrettyString( what );
+		}
 		
+		/// <summary>
+		/// Checks to see if generic values are equal, including the case of both being null.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="expect"></param>
+		/// <param name="check"></param>
+		/// <returns></returns>
+		static public bool IsNullEquals<T>( T expect, T check ) {
+			if (expect==null && check==null) return true;
+			if (expect==null || check==null) return false;
+			return expect.Equals( check );
+		}
 
 	}
 }
