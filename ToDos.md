@@ -1,13 +1,19 @@
 # Tasks
 ============
 
-[done] Finish GenericCollection asserts + tests
+[done] Added utility to mock Console.Out for test purposes.
 
-[done] renamed some assertions to be more standard ( eg.  Empty -> IsEmpty )
+[done] updated nuget script to only add timestamp for -alpha versions
+
+[done] Updated AsPrettyString() to:
+1. [done] skip null values ( smaller output )
+1. [done] dump enums as strings ( human readable )
+
+[done] switch to line checking logic ( obsolete StringDiff class )
+* update to provide multiple issues, essentially one per line of difference
+* try look-ahead algorithms to see if the objects become matched again.
 
 add vertical ruler to guide code size ( need to find settings.json )
-
-unify with line based comparitor, may be easier to maintain and comprehend
 
 scripts to work with developer specific properties ( local filepaths et al )
 
@@ -18,6 +24,8 @@ scripts to work with developer specific properties ( local filepaths et al )
 Assertions must have 'message' variation.
 
 Complete Documentation with code examples.
+
+Default version to remove Json / need a local pretty displayer.
 
 create version that leverages Json
 
@@ -31,4 +39,4 @@ Start on measure assertion coverage:
 * class level access ( values passed in, returned, and exist in class )
 * system level access ( values passed in, returing, in-class, and all statically accessible values )
 
-Document standard test organization: preparation, mocking, invocation, result, assertion, order, naming, access-levels
+Document standard test organization: preparation, mocking, invocation, result, assertion, cleanup, order, naming, access-levels
