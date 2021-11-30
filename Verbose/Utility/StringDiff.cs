@@ -10,6 +10,7 @@ namespace Verbose.Utility {
 	/// Static method to compare strings returns a StringDiff object
 	/// with detailed explanation of the first difference found.
 	/// </summary>
+	[Obsolete]
 	public class StringDiff {
 
 		public bool hasError() { return Explain!=null; }
