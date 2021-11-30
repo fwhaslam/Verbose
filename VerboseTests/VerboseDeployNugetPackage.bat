@@ -22,9 +22,13 @@ set REPO=C:\Users\Fred\NugetRepository
 For /f "tokens=2-4 delims=/ " %%a in ('echo %DATE%') do (set mydate=%%c%%a%%b)
 For /f "tokens=1-4 delims=:." %%a in ('echo %TIME%') do (set mytime=%%a%%b%%c%%d)
 set TIMESTAMP=%mydate%%mytime%
-echo TIMESTAMP=[%TIMESTAMP%]
+REM echo TIMESTAMP=[%TIMESTAMP%]
 
-REM set FILE=..\Verbose\bin\Release\Verbose.0.0.1-alpha.nupkg
+REM only use timestamp if this is an 'alpha' version ( if contains 'dash' )
+IF x%VERSION:-=%==x%VERSION% (set TIMESTAMP=)
+rem IF /i [%VERSION:~-6%]!=[-alpha] (set TIMESTAMP=)
+
+REM copy current nupkg file into timestamped version in repository.
 set FILE=..\%PROJECT%\bin\Release\%PROJECT%.%VERSION%.nupkg
 set FILESTAMPED=..\%PROJECT%\bin\Release\%PROJECT%.%VERSION%%TIMESTAMP%.nupkg
 copy %FILE% %FILESTAMPED%
