@@ -9,14 +9,40 @@ namespace Verbose.Utility {
 	using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 	using static Verbose.Utility.VerboseAsserts;
 
+	public enum TestEnum {
+		One,Two
+	};
+
 	public class TestMe {
+
 		public string AString {  get; set; }
+
 		public int AnInt {  get; set; }
+
 		public char AChar {  get; set; }
+
+		public TestEnum AnEnum { get; set; }
 	}
 
 	[TestClass]
 	public class VerboseToolsTest {
+
+		[TestMethod]
+		public void Print() {
+			var mocker = ConsoleMocker.MockConsoleOut();
+			try { 
+				// invocation
+				VerboseTools.Print("Hello World!");
+				VerboseTools.Print("Testing");
+
+				// assertion
+				AreEqual("Hello World!\nTesting\n", mocker.GetResult());
+			}
+			finally {
+				mocker.RestoreConsoleOut();
+			}
+		}
+
 
 		[TestMethod]
 		public void AsString() {
@@ -26,13 +52,14 @@ namespace Verbose.Utility {
 			work.AString = "some-value";
 			work.AnInt = 123;
 			work.AChar = 'X';
+			work.AnEnum = TestEnum.One ;
 
 			// invocation
 			var result = VerboseTools.AsString( work );
 
 			// assertions
 			AreEqual(
-				"{\"AChar\":\"X\",\"AnInt\":123,\"AString\":\"some-value\"}", 
+				"{\"AChar\":\"X\",\"AnEnum\":\"One\",\"AnInt\":123,\"AString\":\"some-value\"}", 
 				result );
 		}
 
@@ -46,7 +73,7 @@ namespace Verbose.Utility {
 
 			// assertions
 			AreEqual(
-				"{\"AChar\":\"\\u0000\",\"AnInt\":0,\"AString\":null}", 
+				"{\"AChar\":\"\\u0000\",\"AnEnum\":\"One\",\"AnInt\":0}", 
 				result );		
 		}
 
@@ -57,13 +84,14 @@ namespace Verbose.Utility {
 			work.AString = "some-value";
 			work.AnInt = 123;
 			work.AChar = 'X';
+			work.AnEnum = TestEnum.One ;
 
 			// invocation
 			var result = VerboseTools.ToString( work );
 
 			// assertions
 			AreEqual(
-				"{\"AChar\":\"X\",\"AnInt\":123,\"AString\":\"some-value\"}", 
+				"{\"AChar\":\"X\",\"AnEnum\":\"One\",\"AnInt\":123,\"AString\":\"some-value\"}", 
 				result );
 		}
 
@@ -75,16 +103,18 @@ namespace Verbose.Utility {
 			work.AString = "some-value";
 			work.AnInt = 123;
 			work.AChar = 'X';
+			work.AnEnum = TestEnum.One ;
 
 			// invocation
 			var result = VerboseTools.AsPrettyString( work );
 
 			// assertions
 			StringsAreEqual("{\n"+
-    				"  \"AChar\": \"X\",\n"+
-    				"  \"AnInt\": 123,\n"+
-    				"  \"AString\": \"some-value\"\n"+
-    				"}",  result );
+					"  \"AChar\": \"X\",\n"+
+					"  \"AnEnum\": \"One\",\n"+
+					"  \"AnInt\": 123,\n"+
+					"  \"AString\": \"some-value\"\n"+
+					"}",  result );
 		}
 		
 		[TestMethod]
@@ -94,6 +124,7 @@ namespace Verbose.Utility {
 			work.AString = "some-value";
 			work.AnInt = 123;
 			work.AChar = 'X';
+			work.AnEnum = TestEnum.One ;
 
 			// invocation
 			var result = VerboseTools.ToPrettyString( work );
@@ -101,6 +132,7 @@ namespace Verbose.Utility {
 			// assertions
 			StringsAreEqual("{\n"+
     				"  \"AChar\": \"X\",\n"+
+					"  \"AnEnum\": \"One\",\n"+
     				"  \"AnInt\": 123,\n"+
     				"  \"AString\": \"some-value\"\n"+
     				"}",  result );

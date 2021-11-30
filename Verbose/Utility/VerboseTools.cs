@@ -2,16 +2,16 @@
 //	Copyright 2021 Frederick William Haslam born 1962 in the USA
 //
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-
 namespace Verbose.Utility {	
 
+	using System;
+	using System.Collections.Generic;
+	using System.IO;
+	using System.Linq;
+
+	using Newtonsoft.Json;
+	using Newtonsoft.Json.Converters;
+	using Newtonsoft.Json.Serialization;
 
 	/// <summary>
 	/// Utilities to create testable verbose strings.
@@ -31,13 +31,19 @@ namespace Verbose.Utility {
 			}
 		}
 
+		static readonly JsonSerializerSettings JSON_SETTINGS = new JsonSerializerSettings { 
+			ContractResolver = new OrderedContractResolver(),
+			NullValueHandling = NullValueHandling.Ignore,
+			Converters = new List<JsonConverter>{ new StringEnumConverter() }
+		};
+
+
 		/// <summary>
-		/// Json serialize alphabetically.
+		/// Wrapper for Console messaging, useful in test environments.
 		/// </summary>
-		/// <param name="obj"></param>
-		/// <returns></returns>
-		static public string SerialiseAlphabeticaly(object obj) {
-			return JsonConvert.SerializeObject(obj, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new OrderedContractResolver() });
+		/// <param name="msg"></param>
+		static public void Print( string msg ) {
+			Console.Out.WriteLine( msg );
 		}
 
 
@@ -48,7 +54,7 @@ namespace Verbose.Utility {
 		/// <returns></returns>
 		static public string AsString( Object what ) {
 			 return JsonConvert
-				.SerializeObject(what, new JsonSerializerSettings { ContractResolver = new OrderedContractResolver() })
+				.SerializeObject( what, JSON_SETTINGS )
 				.Replace("\r","");
 		}
 		static public string ToString( Object what ) {
@@ -65,7 +71,7 @@ namespace Verbose.Utility {
 
 			return JsonConvert
 				// pretty indentation, alphabetical sorting
-				.SerializeObject( what, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new OrderedContractResolver() } )
+				.SerializeObject( what, Formatting.Indented, JSON_SETTINGS )
 				// no line-feeds, always simple carriage returns
 				.Replace("\r","");
 		}
