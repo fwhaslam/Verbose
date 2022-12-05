@@ -8,7 +8,7 @@ Verbose Assertion is a technique which provides a huge speedup in test construct
 
 The key is to represent all the fields of a class as a single string.  This string can 
 be dropped into a single assertion which checks ALL fields in the object. When properly 
-supported, Verbose Assertion will let you rapidly buid Assertion Coverage.
+supported, Verbose Assertion will let you rapidly build Assertion Coverage.
 
 
 ## What is Assertion Coverage ?
@@ -36,9 +36,9 @@ In order to perform verbose assertion, you need three things:
 
 1. The ability to represent an object as a string. ( JSON and YAML are both great for this )
 
-1. The ability to copy+paste formatted strings into an assertion method.
+1. The ability to copy+paste formatted strings into test assertions.
 
-1. Reporting on string differences formatted for human comprehension.
+1. Reporting on string differences, formatted for human comprehension.
 
 
 The first requirement can be fulfilled with JSON or YAML tools.  You can also construct 
@@ -46,14 +46,16 @@ your own 'ToDisplay()' methods to customize the representation.  These methods c
 be recursed for full representation, but beware of circular references.
 
 The second requirement is more difficult.  There are currently no Visual Studio tools which 
-allow for copy+paste of formated strings into quotes.  INSTEAD the MoreAssert.StringsAreEqual() 
+allow for copy+paste of formated strings into quotes.  INSTEAD the VerboseAsserts.StringsAreEqual() 
 method will dump a completely formatted version of the 'actual' value to the console. This 
-'dump' is formatted with quotes, line breaks and string joins.  You can copy and 
-paste this object into the 'expect' part of your assertion.
+dump is formatted with quotes, line breaks and string joins.  You can copy and 
+paste this object diretly into the 'expect' part of your assertion.
+**UPDATE:** as of C# version 11 raw string literals are supported.  This project does 
+not currently support raw string literals.
 
-THe third requirement is addressed by the MoreAsserts.StringsAreEqual() method.  When the 
-strings differ, it will tell you exactly where they differ, and show you a section from both 
-the expected and the actual values.
+THe third requirement is addressed by the VerboseAsserts.StringsAreEqual() method.  When the 
+strings differ, it will tell you exactly where they differ, and show you a comparatively 
+section from both the expected and the actual values.
 
 
 ## What Next?
@@ -72,8 +74,10 @@ What I want to Add ?
 
 1. Build evaulators for C# code, to analyze the variable space underlying AC.
 
+1. Support for raw string literals.
 
-## What kind of pasting am I talking about?
+
+## What kind of pasting would I like to create?
 
 You have a string which contains line breaks:  "Hi There\n\rGood to see you.";
 
