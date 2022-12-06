@@ -18,6 +18,15 @@ namespace Verbose.Utility {
 	/// This is built over Newtonsoft.Json
 	/// </summary>
 	public class VerboseTools {
+		
+		/// <summary>
+		/// Return the project directory to access test resources
+		/// </summary>
+		/// <returns></returns>
+		static public string GetProjectDirectory() {
+			string workingDir = Directory.GetCurrentDirectory();
+			return Directory.GetParent(workingDir).Parent.Parent.FullName;
+		}
 
 		/// <summary>
 		/// Add alphabetical ordered to the Json serialization.

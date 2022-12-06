@@ -26,6 +26,12 @@ namespace Verbose.Utility {
 
 	[TestClass]
 	public class VerboseToolsTest {
+		
+		[TestMethod]
+		public void GetProjectDirectory() {
+			string value = VerboseTools.GetProjectDirectory();
+			Assert.IsTrue( value.EndsWith("VerboseTests") );
+		}
 
 		[TestMethod]
 		public void Print() {

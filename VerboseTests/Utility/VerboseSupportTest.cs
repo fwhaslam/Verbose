@@ -7,6 +7,7 @@ namespace Verbose.Utility {
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 	using System;
+	using System.Collections.Generic;
 
 	using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -18,7 +19,7 @@ namespace Verbose.Utility {
 		public void VerboseFail() {
 			try {
 				VerboseSupport.VerboseFail("Boom!");
-				Assert.Fail("Must not reach this line!");
+				Fail("Must not reach this line!");
 			} 
 			catch ( VerboseAssertionException ex) {
 				AreEqual( "Boom!", ex.Message );
@@ -26,11 +27,22 @@ namespace Verbose.Utility {
 		}
 
 		[TestMethod]
-		public void GetProjectDirectory() {
-			string value = VerboseSupport.GetProjectDirectory();
-			Assert.IsTrue( value.EndsWith("VerboseTests") );
+		public void First() { 
+			int[] values = {1,2,3};
+			List<int> list = new List<int>( values );	
+
+			// assertions
+			Assert.AreEqual( 1, VerboseSupport.First(list) );
 		}
 
+		[TestMethod]
+		public void Last() {
+			int[] values = {1,2,3};
+			List<int> list = new List<int>( values );	
+
+			// assertions
+			Assert.AreEqual( 3, VerboseSupport.Last(list) );
+		}
 	
 		[TestMethod]
 		public void ToCodeString() { 

@@ -17,16 +17,17 @@ namespace Verbose.Utility {
 		static internal void VerboseFail(string msg) {
 			throw new VerboseAssertionException(msg);
 		}
-
-		/// <summary>
-		/// Return the project directory to access test resources
-		/// </summary>
-		/// <returns></returns>
-		static internal string GetProjectDirectory() {
-			string workingDir = Directory.GetCurrentDirectory();
-			return Directory.GetParent(workingDir).Parent.Parent.FullName;
-		}
 	
+		// Linq Placeholders for net4.7.1 :: avaialble via Linq for net5.0
+
+		static internal T First<T>(ICollection<T> list) {
+			return list.ToList().First();
+		}
+
+		static internal T Last<T>(ICollection<T> list) {
+			return list.ToList().Last();
+		}
+
 //======================================================================================================================
 	
 		static readonly internal string NOLF_FILLER = "\\n\"+\n\t\t\t\t\"";
@@ -53,16 +54,6 @@ namespace Verbose.Utility {
 			string joined = work.Replace( split, join );
 			return "\"" + joined + "\"";
 
-		}
-
-		// Linq Placeholders for net4.7.1
-
-		static internal T First<T>(ICollection<T> list) {
-			return list.ToList().First();
-		}
-
-		static internal T Last<T>(ICollection<T> list) {
-			return list.ToList().Last();
 		}
 	}
 }
