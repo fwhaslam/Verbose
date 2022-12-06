@@ -2,11 +2,9 @@
 //	Copyright 2021 Frederick William Haslam born 1962 in the USA
 //
 
-namespace VerboseTests.Utility {
+namespace Verbose.Utility {
 
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-	using Verbose.Utility;
 
 	using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
@@ -24,7 +22,7 @@ namespace VerboseTests.Utility {
 			var result = VerboseAsserts.IssueToDisplay( null, null, actual );
 
 			// assertions = remains 'triple' slash when displayed
-System.Console.WriteLine("RESULT=[[[\n"+result+"\n]]]");
+			//System.Console.WriteLine("RESULT=[[[\n"+result+"\n]]]");
 
 			AreEqual( "[[\"StrField: (\\\"he\\\\\\\"llo\\\",False)\"]]\n", result );
 		}

@@ -16,6 +16,8 @@ scripts to work with developer specific properties ( local filepaths et al )
 # Objectives
 ============
 
+Rebuild Java version of this project.
+
 Assertions must have 'message' variation.
 
 Complete Documentation with code examples.

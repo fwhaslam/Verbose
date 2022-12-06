@@ -10,7 +10,7 @@ namespace Verbose.Utility {
 	/// Static method to compare strings returns a StringDiff object
 	/// with detailed explanation of the first difference found.
 	/// </summary>
-	[Obsolete("VerboseAsserts.StringsAreEqual() is now supported by VeboseAsserts.FindLineDifference()")]
+	[Obsolete("VerboseAsserts.StringsAreEqual() is now supported by VerboseAsserts.FindLineDifference()")]
 	public class StringDiff {
 
 		public bool hasError() { return Explain!=null; }
