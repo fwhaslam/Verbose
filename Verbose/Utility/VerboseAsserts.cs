@@ -165,7 +165,7 @@ namespace Verbose.Utility {
 			buf.Append("[[\"");
 			for (int ax=0;ax<actual.Length;ax++) {
 				if (ax>0) buf.Append("\\n\"+\n\t\t\"");
-				buf.Append( actual[ax].Replace( "\"", "\\\"" ) );
+				buf.Append( FixQuoteSlashes( actual[ax] ) );
 //Console.Out.WriteLine( "["+ax+"/"+actual[ax].Length+"] "+actual[ax]);
 			}
 			buf.Append("\"]]\n");
@@ -188,6 +188,16 @@ namespace Verbose.Utility {
 			}
 
 			return buf.ToString();
+		}
+
+
+		/// <summary>
+		/// Quotes may have multiple levels of slashes that need to be handled.
+		/// </summary>
+		/// <param name="work"></param>
+		/// <returns></returns>
+		static internal string FixQuoteSlashes( string work ) {
+			return work.Replace("\\","\\\\").Replace("\"","\\\"");
 		}
 
 	}
