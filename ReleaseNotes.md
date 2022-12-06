@@ -1,4 +1,12 @@
-* 2021/11/30 = Release 0.0.4
+
+### 2022/12/05 = Release 0.0.5
+
+Fixed issue with excess slashes found in YamlTool testing
+
+GetProjectDirectory provided as public method.
+
+
+### 2021/11/30 = Release 0.0.4
 
 Changes:
 Added ConsoleMocker class to mock Console.Out for test purposes.
@@ -12,7 +20,7 @@ Updated VerboseTools.AsPrettyString() to:
 Switch to simpler line checking logic for StringsAreEqual() ( obsolete StringDiff class )
 
 
-* 2021/11/27 = Release 0.0.3
+### 2021/11/27 = Release 0.0.3
 
 Changes:
 * Finish GenericCollection asserts + tests
@@ -20,7 +28,7 @@ Changes:
 * expanded on explanation of verbose assertion
 
 
-2021/10/01 = Release 0.0.3-alpha
+### 2021/10/01 = Release 0.0.3-alpha
 
 changes:
 * broke assertions into more classes
