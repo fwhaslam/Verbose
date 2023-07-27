@@ -1,7 +1,8 @@
 # Tasks
 ============
 
-fix issue with backslashes from TacticalDungeonRealm/YamlTools
+fix issue with backslashes from TacticalDungeonRealm/YamlTools [done]
+
 
 [done] switch to line checking logic ( obsolete StringDiff class )
 * update to provide multiple issues, essentially one per line of difference
@@ -11,6 +12,9 @@ fix issue with backslashes from TacticalDungeonRealm/YamlTools
 add vertical ruler to guide code size ( need to find settings.json )
 
 scripts to work with developer specific properties ( local filepaths et al )
+
+EndsWith/StartsWith to show copyable string similar to StringsAreEqual
+  Show a number of lines that match the line count of 'check' value.
 
 
 # Objectives
@@ -22,11 +26,12 @@ Assertions must have 'message' variation.
 
 Complete Documentation with code examples.
 
-Default version to remove Json / need a local pretty displayer.
+Default version to remove Json dependency / need a local pretty displayer.
 
 create version that leverages Json
 create version that leverages Yaml
 create version that has NO serialization tool dependency
+  maybe simple implementations of json + yaml to avoid library dependency
 
 Start on measure assertion coverage:
 * tooling to review C# methods to determine the variable space that a method can access.
