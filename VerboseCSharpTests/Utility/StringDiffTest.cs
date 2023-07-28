@@ -20,11 +20,18 @@ namespace VerboseCSharpTest.Utility {
 			var result = new StringDiff();
 
 			/// assertion
-			VerboseAsserts.StringsAreEqual( "{\n"+
+			VerboseAsserts.StringsAreEqual( 
+				"{\n"+
+				"  \"Actual\": null,\n"+
+				"  \"ADisplay\": null,\n"+
 				"  \"Cut\": 0,\n"+
 				"  \"Diff\": 0,\n"+
+				"  \"EDisplay\": null,\n"+
+				"  \"Expect\": null,\n"+
+				"  \"Explain\": null,\n"+
+				"  \"Pointer\": null,\n"+
 				"  \"Row\": 0\n"+
-				"}", JsonParser.ToPrettyString( result ) );
+				"}", JsonParser.ToJsonString( result ) );
 		}
 	}
 }

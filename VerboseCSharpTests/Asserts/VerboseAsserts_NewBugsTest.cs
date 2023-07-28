@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using VerboseCSharp.Asserts;
+using VerboseCSharp.Utility;
 
 namespace VerboseCSharpTests.Asserts {
 
@@ -22,7 +23,7 @@ namespace VerboseCSharpTests.Asserts {
 			string[] actual = source.Split('\n');
 
 			// invocation
-			var result = VerboseAsserts.IssueToDisplay( null, null, actual );
+			var result = LineDiff.IssueToDisplay( null, null, actual );
 
 			// assertions = remains 'triple' slash when displayed
 			//System.Console.WriteLine("RESULT=[[[\n"+result+"\n]]]");
@@ -41,7 +42,7 @@ namespace VerboseCSharpTests.Asserts {
 			string[] actual = source.Split('\n');
 
 			// invocation
-			var result = VerboseAsserts.IssueToDisplay( null, null, actual );
+			var result = LineDiff.IssueToDisplay( null, null, actual );
 
 			// assertions = remains 'triple' slash when displayed
 //System.Console.WriteLine("RESULT=[[[\n"+result+"\n]]]");
