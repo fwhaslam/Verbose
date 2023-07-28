@@ -6,8 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+using VerboseCSharp.Asserts;
 
 namespace VerboseCSharp.Utility {	
 
@@ -17,7 +16,7 @@ namespace VerboseCSharp.Utility {
 			throw new VerboseAssertionException(msg);
 		}
 	
-		// Linq Placeholders for net4.7.1 :: avaialble via Linq for net5.0
+		// Linq Placeholders for net4.7.1 :: available via Linq for net5.0
 
 		static internal T First<T>(ICollection<T> list) {
 			return list.ToList().First();

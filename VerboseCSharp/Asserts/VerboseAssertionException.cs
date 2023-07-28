@@ -1,9 +1,9 @@
 ﻿// Copyright (c) 2023 Frederick William Haslam born 1962 in the USA.
 // Licensed under "The MIT License" https://opensource.org/license/mit/
 
-namespace VerboseCSharp.Utility {
+using System;
 
-	using System;
+namespace VerboseCSharp.Asserts {
 
 	/// <summary>
 	/// Thrown when a verbose assertion fails.
@@ -13,4 +13,5 @@ namespace VerboseCSharp.Utility {
 
 		public VerboseAssertionException( string msg ) : base(msg) {}
 	}
+
 }

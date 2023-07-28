@@ -1,16 +1,12 @@
 ﻿// Copyright (c) 2023 Frederick William Haslam born 1962 in the USA.
 // Licensed under "The MIT License" https://opensource.org/license/mit/
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
 namespace VerboseCSharp.Utility {	
-
-	using System;
-	using System.Collections.Generic;
-	using System.IO;
-	using System.Linq;
-
-	using Newtonsoft.Json;
-	using Newtonsoft.Json.Converters;
-	using Newtonsoft.Json.Serialization;
 
 	/// <summary>
 	/// Utilities to create testable verbose strings.
@@ -27,24 +23,6 @@ namespace VerboseCSharp.Utility {
 			return Directory.GetParent(workingDir).Parent.Parent.FullName;
 		}
 
-		/// <summary>
-		/// Add alphabetical ordered to the Json serialization.
-		/// </summary>
-		public class OrderedContractResolver : DefaultContractResolver {
-			protected override IList<JsonProperty> CreateProperties(System.Type type, MemberSerialization memberSerialization) {
-				return base.CreateProperties(type, memberSerialization)
-					.OrderBy(p => p.Order ?? int.MaxValue)  // Honour any explit ordering first
-					.ThenBy(p => p.PropertyName)
-					.ToList();
-			}
-		}
-
-		static readonly JsonSerializerSettings JSON_SETTINGS = new JsonSerializerSettings { 
-			ContractResolver = new OrderedContractResolver(),
-			NullValueHandling = NullValueHandling.Ignore,
-			Converters = new List<JsonConverter>{ new StringEnumConverter() }
-		};
-
 
 		/// <summary>
 		/// Wrapper for Console messaging, useful in test environments.
@@ -53,40 +31,7 @@ namespace VerboseCSharp.Utility {
 		static public void Print( string msg ) {
 			Console.Out.WriteLine( msg );
 		}
-
-
-		/// <summary>
-		/// Create json/string representation of an object.
-		/// </summary>
-		/// <param name="what"></param>
-		/// <returns></returns>
-		static public string AsString( Object what ) {
-			 return JsonConvert
-				.SerializeObject( what, JSON_SETTINGS )
-				.Replace("\r","");
-		}
-		static public string ToString( Object what ) {
-			return AsString( what );
-		}
-
-
-		/// <summary>
-		/// Create pretty formatted json/string representation of an object.
-		/// </summary>
-		/// <param name="what"></param>
-		/// <returns></returns>
-		static public string AsPrettyString( Object what ) {
-
-			return JsonConvert
-				// pretty indentation, alphabetical sorting
-				.SerializeObject( what, Formatting.Indented, JSON_SETTINGS )
-				// no line-feeds, always simple carriage returns
-				.Replace("\r","");
-		}
-		static public string ToPrettyString( Object what ) {
-			return AsPrettyString( what );
-		}
-		
+	
 		/// <summary>
 		/// Checks to see if generic values are equal, including the case of both being null.
 		/// </summary>

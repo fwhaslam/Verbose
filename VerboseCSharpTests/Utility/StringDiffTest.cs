@@ -1,14 +1,14 @@
-﻿//
-//	Copyright 2021 Frederick William Haslam born 1962 in the USA
-//
+﻿// Copyright (c) 2023 Frederick William Haslam born 1962 in the USA.
+// Licensed under "The MIT License" https://opensource.org/license/mit/
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using System;
-using System.Collections.Generic;
-using System.Text;
+using VerboseCSharp.Asserts;
+using VerboseCSharp.Utility;
 
-namespace VerboseCSharp.Utility {
+using VerboseCSharpTests.TestingFramework;
+
+namespace VerboseCSharpTest.Utility {
 
 	[TestClass]
 	public class StringDiffTest {
@@ -24,7 +24,7 @@ namespace VerboseCSharp.Utility {
 				"  \"Cut\": 0,\n"+
 				"  \"Diff\": 0,\n"+
 				"  \"Row\": 0\n"+
-				"}", VerboseTools.AsPrettyString( result ) );
+				"}", JsonParser.ToPrettyString( result ) );
 		}
 	}
 }

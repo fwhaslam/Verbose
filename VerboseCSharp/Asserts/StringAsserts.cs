@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2023 Frederick William Haslam born 1962 in the USA.
 // Licensed under "The MIT License" https://opensource.org/license/mit/
 
-namespace VerboseCSharp.Utility {
+namespace VerboseCSharp.Asserts {
 
 	using System;
 	using System.Collections;

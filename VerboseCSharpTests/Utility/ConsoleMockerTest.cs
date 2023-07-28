@@ -1,20 +1,13 @@
-﻿//
-//	Copyright 2021 Frederick William Haslam born 1962 in the USA
-//
+﻿// Copyright (c) 2023 Frederick William Haslam born 1962 in the USA.
+// Licensed under "The MIT License" https://opensource.org/license/mit/
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
-namespace VerboseCSharp.Utility {
+using System;
+using VerboseCSharp.Utility;
 
-	using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-	using System;
-	using System.Collections.Generic;
-	using System.IO;
-	using System.Linq;
-	using System.Text;
-	using System.Threading.Tasks;
-
-		using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
+namespace VerboseCSharpTest.Utility {
 
 	[TestClass]
 	public class ConsoleMockerTest {
