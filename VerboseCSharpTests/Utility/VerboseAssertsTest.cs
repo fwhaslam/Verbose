@@ -2,7 +2,7 @@
 //	Copyright 2021 Frederick William Haslam born 1962 in the USA
 //
 
-namespace Verbose.Utility {
+namespace VerboseCSharp.Utility {
 
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;

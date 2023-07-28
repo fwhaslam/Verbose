@@ -2,12 +2,12 @@
 //	Copyright 2021 Frederick William Haslam born 1962 in the USA
 //
 
-namespace Verbose.Utility {
+namespace VerboseCSharp.Utility {
 
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 	using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
-	using static Verbose.Utility.VerboseAsserts;
+	using static VerboseCSharp.Utility.VerboseAsserts;
 
 	public enum TestEnum {
 		One,Two
@@ -30,7 +30,7 @@ namespace Verbose.Utility {
 		[TestMethod]
 		public void GetProjectDirectory() {
 			string value = VerboseTools.GetProjectDirectory();
-			Assert.IsTrue( value.EndsWith("VerboseTests") );
+			Assert.IsTrue( value.EndsWith("VerboseCSharpTests") );
 		}
 
 		[TestMethod]

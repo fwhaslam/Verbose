@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VerboseCSharp", "Verbose\VerboseCSharp.csproj", "{9F629F7A-E299-419C-AAFB-98475E07FF5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VerboseCSharp", "VerboseCSharp\VerboseCSharp.csproj", "{9F629F7A-E299-419C-AAFB-98475E07FF5F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VerboseCSharpTests", "VerboseTests\VerboseCSharpTests.csproj", "{66FB7D49-1726-4E86-8F28-D8AEA6289D9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VerboseCSharpTests", "VerboseCSharpTests\VerboseCSharpTests.csproj", "{66FB7D49-1726-4E86-8F28-D8AEA6289D9D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8BA2AC48-CA84-4740-9FB8-6AE07CCCC16A}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		ReleaseNotes.md = ReleaseNotes.md
 		ToDos.md = ToDos.md
+		VerboseCSharpTests\VerboseDeployNugetPackage.bat = VerboseCSharpTests\VerboseDeployNugetPackage.bat
 	EndProjectSection
 EndProject
 Global

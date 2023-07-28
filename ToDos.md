@@ -1,6 +1,28 @@
 # Tasks
 ============
 
+(?) publish to nuget: https://www.nuget.org/
+figure out a better way to export/import the DLL
+see: VerboseDeployNugetPackage.bat
+
+Update to build for .net #8 as well as .net 4.7.1
+
+add some kind of 'settings' so things like 'linefeeds' can be handle consistently.
+
+Remove Yaml/Json dependency.
+
+Update Verbose utilities:
+* stringsAreEqual should have one line say 'expect' and next line say 'actual'
+Verbose - add comments to StringDisplay with line numbers :: // line 70 ...
+Verbose update yaml to disable aliases (DisableAliases())
+Migrate FlakyAnnotation to VerboseCSharp().
+Add PathsAreEqual() to StringAsserts ( which ignores forward vs backslash )
+
+split packages:
+/Asserts
+/Support
+
+
 fix issue with backslashes from TacticalDungeonRealm/YamlTools [done]
 
 

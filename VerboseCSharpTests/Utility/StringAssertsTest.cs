@@ -8,7 +8,7 @@ using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Verbose.Utility {
+namespace VerboseCSharp.Utility {
 
 	[TestClass]
 	public class StringAssertsTest {

@@ -5,7 +5,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\Verbose\Verbose.csproj" />
+    <ProjectReference Include="..\VerboseCSharp\VerboseCSharp.csproj" />
     
     <!-- necessary for net5.0 testing -->
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
@@ -16,8 +16,8 @@
     
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+  <!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="VerboseDeployNugetPackage.bat $(Version) $(ProjectKey)" />
-  </Target>
+  </Target>-->
   
 </Project>

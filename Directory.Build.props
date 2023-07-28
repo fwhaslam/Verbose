@@ -11,7 +11,7 @@
     <Version>0.0.6-alpha</Version>
     
     <!-- name of project which contains the nupkg for deployment -->
-    <ProjectKey>Verbose</ProjectKey>
+    <ProjectKey>VerboseCSharp</ProjectKey>
     
     <!-- shared dependency versions -->
     <MSTest_Version>2.2.7</MSTest_Version>

@@ -3,7 +3,7 @@
 //
 
 
-namespace Verbose.Utility {
+namespace VerboseCSharp.Utility {
 
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;

@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Verbose.Utility {
+namespace VerboseCSharp.Utility {
 
 	[TestClass]
 	public class StringDiffTest {

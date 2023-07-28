@@ -1,14 +1,13 @@
-﻿//
-//	Copyright 2021 Frederick William Haslam born 1962 in the USA
-//
+﻿// Copyright (c) 2023 Frederick William Haslam born 1962 in the USA.
+// Licensed under "The MIT License" https://opensource.org/license/mit/
 
-namespace Verbose.Utility {
+namespace VerboseCSharp.Utility {
 
 	using System;
 	using System.Collections;
 	using System.Collections.Generic;
 
-	using static Verbose.Utility.VerboseSupport;
+	using static VerboseCSharp.Utility.VerboseSupport;
 
 	/// <summary>
 	/// String and collection oriented assertions.  
