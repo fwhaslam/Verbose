@@ -17,9 +17,5 @@
     <PackageReference Include="YamlDotNet" Version="13.1.1" />
     
   </ItemGroup>
-
-  <!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="VerboseDeployNugetPackage.bat $(Version) $(ProjectKey)" />
-  </Target>-->
   
 </Project>
