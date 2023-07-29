@@ -4,15 +4,22 @@
     <!--<TargetFrameworks>net4.7.1;net5.0</TargetFrameworks>-->
     <ProjectName>$(ProjectKey)</ProjectName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Fred Haslam</Authors>
-    <Company>Fred Haslam</Company>
-    <Description>
-      Tools to support Verbose Assertion in C-Sharp.
-      see: https://github.com/fwhaslam/VerboseCSharp
-    </Description>
+    <Authors>Frederick W Haslam</Authors>
+    <Company>FredsFriends</Company>
+    <Description>Tools to support Verbose Assertion in C-Sharp.
+  see: https://github.com/fwhaslam/VerboseCSharp
+</Description>
     <!--<AssemblyName>$(ProjectName)_$(Version)</AssemblyName>-->
     <PackageId>$(ProjectKey)</PackageId>
     <UserSecretsId>70edb541-7ee0-4461-bca7-6e057db968e4</UserSecretsId>
+    <Copyright>Copyright (c) 2022 Frederick William Haslam born 1962 in the USA.</Copyright>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/fwhaslam/VerboseCSharp</PackageProjectUrl>
+    <PackageReleaseNotes>VeboseAsserts = StringsAreEqual( expect, actual )
+Generic/CollectionAsserts = IsEmpty/IsFirst/IsLast/StartsWith/EndsWith/Contains
+StringAsserts = IsEmpty/StartsWith/EndsWith/Contains
+</PackageReleaseNotes>
+    <PackageTags>test assert verbose unit integration functional acceptance assertion coverage</PackageTags>
   </PropertyGroup>
 
   <!--
@@ -21,6 +28,12 @@
   -->
   <ItemGroup>
     <PackageReference Include="DiffPlex" Version="1.7.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
