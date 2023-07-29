@@ -37,26 +37,5 @@ namespace VerboseCSharpTests.Asserts {
 			VerboseAsserts.StringsAreEqual( "check", "check false" );
 		}
 
-
-		// Line Comparison methods ================================================
-
-		[TestMethod]
-		public void StringLinesAreEqual_arrays_success() {
-
-			string[] first = { "one", "two" };
-			string[] second = { "one", "two" };
-
-			VerboseAsserts.StringLinesAreEqual(first, second);
-		}
-
-		[TestMethod]
-		[ExpectedException(typeof(VerboseAssertionException))]
-		public void StringLinesAreEqual_arrays_failure() {
-
-			string[] first = { "one", "two" };
-			string[] second = { "one", "two", "three" };
-
-			VerboseAsserts.StringLinesAreEqual(first, second);
-		}
 	}
 }

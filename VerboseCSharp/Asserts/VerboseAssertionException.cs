@@ -7,6 +7,7 @@ namespace VerboseCSharp.Asserts {
 
 	/// <summary>
 	/// Thrown when a verbose assertion fails.
+    /// Functions as 'Fail' signal for MS Unit Tests.
 	/// Extends SystemException so that exception declarations are unnecessary.
 	/// </summary>
 	public class VerboseAssertionException : SystemException {

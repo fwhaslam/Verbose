@@ -7,12 +7,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using static VerboseCSharp.Utility.LineDiff;
+using VerboseCSharp.Utility;
+
+using static VerboseCSharp.Utility.VerboseSupport;
 
 namespace VerboseCSharp.Asserts {
 
-
-	using static VerboseCSharp.Utility.VerboseSupport;
 
 	/// <summary>
 	/// String and collection oriented assertions.  
@@ -25,31 +25,31 @@ namespace VerboseCSharp.Asserts {
 		/// </summary>
 		/// <param name="expect"></param>
 		/// <param name="actual"></param>
-		static public void StringsAreEqual( string expect, string actual ) {
+		public static void StringsAreEqual( string expect, string actual ) {
+
+			// check for null comparisons
 			if (expect == null && actual == null) return;
 			if (expect == null)
 				VerboseFail("Actual value is not null.");
 			if (actual == null)
 				VerboseFail("Actual value is null.");
-			StringLinesAreEqual( expect, actual );
-		}
 
-		static public void StringLinesAreEqual(string[] expect, string[] actual) {
-			string reason = CompareStringLines(expect, actual);
-			if (reason != null) throw new VerboseAssertionException(reason);
-		}
+			// evaluate
+			var (summary,copy,report) = AnalyzeWithDiffPlex.CompareStrings(expect, actual);
 
-		static public void StringLinesAreEqual(ICollection<string> expect, ICollection<string> actual) {
-			string[] expectAry = expect.ToArray<string>();
-			string[] actualAry = actual.ToArray<string>();
-			StringLinesAreEqual(expectAry, actualAry);
-		}
+			// no difference, no output
+			if (summary==null) return;
 
-		static public void StringLinesAreEqual(string expect, string actual) {
+			// display copy+paste value, display detailed report
+			Console.Out.WriteLine( "Actual Value For Copy and Paste "+copy );
 
-			string[] expectAry = expect.Replace("\r", "").Split('\n');
-			string[] actualAry = actual.Replace("\r", "").Split('\n');
-			StringLinesAreEqual(expectAry, actualAry);
+			Console.Out.WriteLine(
+				"\n:::: Detailed Line Difference Report ::::\n"+
+				report+
+				"\n:::: End of Report ::::");
+
+			// throw summary
+			throw new VerboseAssertionException(summary);
 		}
 
 	}
