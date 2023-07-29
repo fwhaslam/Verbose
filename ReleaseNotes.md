@@ -1,5 +1,7 @@
 ### 2023/07/29 = Release 1.0.0
 
+Fixed settings for NuGet packaing.
+
 Renamed projects as VerboseCSharp/Tests.
 
 Rebuilt difference engine using DiffPlex.
@@ -10,6 +12,8 @@ VerboseAsserts.StringsAreEqual() now produces three elements:
 * a summary of line differences ( added, droped, changed ) which is thrown on assertion failure.
 * a copyable string in the console, which lets you copy the Actual value and paste it into your test.
 * a detailed line difference report in the console, so you can see exactly what has changed.
+
+Renamed StringAsserts.Empty() and NotEmpty() to IsEmpty() and IsNotEmpty() for consistency.
 
 Removed the following:
 * StringLinesAreEqual(), because StringsAreEqual() is sufficient.
