@@ -58,7 +58,7 @@ object directly into the 'Expect' element of your assertion.
 **Update:** as of C# version 11 raw string literals are supported.  This project does not currently 
 support raw string literals.
 
-THe **Third** requirement is addressed by the VerboseAsserts.StringsAreEqual() method.  When the 
+The **Third** requirement is addressed by the VerboseAsserts.StringsAreEqual() method.  When the 
 strings differ, it will throw an exception with a line difference summary, and dump a detailed 
 report to the console showing exactly which lines are different and where.
 
@@ -217,7 +217,7 @@ The detailed report will show the four added values, which I can validate before
 the copy + paste operation.
 
 Another benefit?  Adding new values to SomeObjectWithToDisplay will FORCE the Yaml tests to fail.
-The ToDisplay() tests will also fail, provided ToDisplay() was updated.   This is a GOOD thing.  
+The ToDisplay() tests will also fail, provided ToDisplay() was updated.   This is a GOOD thing. 
 Changes to code SHOULD force changes to tests.  Otherwise, what are the tests really testing?
 
 
