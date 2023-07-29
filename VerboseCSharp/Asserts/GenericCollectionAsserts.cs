@@ -21,13 +21,13 @@ namespace VerboseCSharp.Asserts {
 		// generic collections
 		//=====================
 
-		static public void IsEmpty<T>( ICollection<T> actual ) {
+		public static void IsEmpty<T>( ICollection<T> actual ) {
 			if (actual!=null && actual.Count>0 ) {
 				VerboseFail("Collection is not empty");
 			}
 		}
 
-		static public void IsNotEmpty<T>( ICollection<T> actual ) {
+		public static void IsNotEmpty<T>( ICollection<T> actual ) {
 			if (actual==null) VerboseFail("Collection is null");
 			if (actual.Count==0) VerboseFail("Collection is empty");
 		}
@@ -35,7 +35,7 @@ namespace VerboseCSharp.Asserts {
 		// generic collections single value
 		//=========================
 		
-		static public void IsFirst<T>( T expect, ICollection<T> actual ) {
+		public static void IsFirst<T>( T expect, ICollection<T> actual ) {
 			//if (expect==null)) Fail("Cannot expect null for First.");
 			if (actual==null || actual.Count==0) VerboseFail("Collection is empty, no first element.");
 			IEnumerator<T> loop = actual.GetEnumerator();
@@ -46,7 +46,7 @@ namespace VerboseCSharp.Asserts {
 			}
 		}
 
-		static public void IsLast<T>( T expect, ICollection<T> actual ) {
+		public static void IsLast<T>( T expect, ICollection<T> actual ) {
 			//if (expect==null)) Fail("Cannot expect null for Last.");
 			if (actual==null || actual.Count==0) VerboseFail("Collection is empty, no last element.");
 			IEnumerator<T> loop = actual.GetEnumerator();
@@ -59,7 +59,7 @@ namespace VerboseCSharp.Asserts {
 			}
 		}
 		
-		static public void Contains<T>( T expect, ICollection<T> actual ) {
+		public static void Contains<T>( T expect, ICollection<T> actual ) {
 			//if (expect==null)) Fail("Cannot expect null for Contains.");
 			if (actual==null || actual.Count==0) VerboseFail("Collection is empty, no elements.");
 			IEnumerator<T> loop = actual.GetEnumerator();
@@ -69,7 +69,7 @@ namespace VerboseCSharp.Asserts {
 			VerboseFail("Collection does not contain element.");
 		}
 
-		static public void NotContains<T>( T expect, ICollection<T> actual ) {
+		public static void NotContains<T>( T expect, ICollection<T> actual ) {
 			//if (expect==null)) Fail("Cannot expect null for NotContains.");
 			if (actual==null || actual.Count==0) VerboseFail("Collection is empty, no elements.");
 			IEnumerator loop = actual.GetEnumerator();
@@ -81,7 +81,7 @@ namespace VerboseCSharp.Asserts {
 		// generic collections multi value collection
 		//===================================
 		
-		static public void StartsWith<T>( ICollection<T> expect, ICollection<T> actual ) {
+		public static void StartsWith<T>( ICollection<T> expect, ICollection<T> actual ) {
 
 			if ( expect==null || expect.Count==0 ) VerboseFail("Cannot expect with null or empty collection.");
 			if ( actual==null || actual.Count==0 ) VerboseFail("Collection is empty, no elements.");
@@ -97,7 +97,7 @@ namespace VerboseCSharp.Asserts {
 			}
 		}
 
-		static public void EndsWith<T>( ICollection<T> expect, ICollection<T> actual ) {
+		public static void EndsWith<T>( ICollection<T> expect, ICollection<T> actual ) {
 
 			if ( expect==null || expect.Count==0 ) VerboseFail("Cannot expect with null or empty collection.");
 			if ( actual==null || actual.Count==0 ) VerboseFail("Collection is empty, no elements.");
@@ -120,7 +120,7 @@ namespace VerboseCSharp.Asserts {
 			}
 		}
 		
-		static public void Contains<T>( ICollection<T> expect, ICollection<T> actual ) {
+		public static void Contains<T>( ICollection<T> expect, ICollection<T> actual ) {
 //Console.Out.WriteLine("START");
 			if ( expect==null || expect.Count==0 ) VerboseFail("Cannot expect with null or empty collection.");
 			if ( actual==null || actual.Count==0 ) VerboseFail("Collection is empty, no elements.");
@@ -147,7 +147,7 @@ namespace VerboseCSharp.Asserts {
 			}
 		}
 
-		static public void NotContains<T>( ICollection<T> expect, ICollection<T> actual ) {
+		public static void NotContains<T>( ICollection<T> expect, ICollection<T> actual ) {
 //Console.Out.WriteLine("START");
 			if ( expect==null || expect.Count==0 ) VerboseFail("Cannot expect with null or empty collection.");
 			if ( actual==null || actual.Count==0 ) VerboseFail("Collection is empty, no elements.");
@@ -178,22 +178,22 @@ namespace VerboseCSharp.Asserts {
 		// collections multi value params :: NOTE that params are last in list, breaking the pattern
 		//===================================
 
-		static public void StartsWith<T>( ICollection<T> actual, params T[] expect ) {
+		public static void StartsWith<T>( ICollection<T> actual, params T[] expect ) {
 			List<T> elist = new List<T>(expect);
 			StartsWith( elist, actual );
 		}
 
-		static public void EndsWith<T>( ICollection<T> actual, params T[] expect ) {
+		public static void EndsWith<T>( ICollection<T> actual, params T[] expect ) {
 			List<T> elist = new List<T>(expect);
 			EndsWith( elist, actual );
 		}
 
-		static public void Contains<T>( ICollection<T> actual, params T[] expect ) {
+		public static void Contains<T>( ICollection<T> actual, params T[] expect ) {
 			List<T> elist = new List<T>(expect);
 			Contains( elist, actual );
 		}
 
-		static public void NotContains<T>( ICollection<T> actual, params T[] expect ) {
+		public static void NotContains<T>( ICollection<T> actual, params T[] expect ) {
 			List<T> elist = new List<T>(expect);
 			NotContains( elist, actual );
 		}

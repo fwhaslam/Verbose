@@ -15,7 +15,7 @@ namespace VerboseCSharp.Asserts {
 	/// </summary>
 	public class StringAsserts {
 
-		static public void StartsWith( string expect, string actual ) {
+		public static void StartsWith( string expect, string actual ) {
 			if (String.IsNullOrEmpty(expect)) VerboseFail("Cannot expect null or empty string");
 			if (String.IsNullOrEmpty(actual)) VerboseFail("String is Null or Empty" );
 			if (!actual.StartsWith(expect)) {
@@ -23,7 +23,7 @@ namespace VerboseCSharp.Asserts {
 			}
 		}
 
-		static public void EndsWith( string expect, string actual ) {
+		public static void EndsWith( string expect, string actual ) {
 			if (String.IsNullOrEmpty(expect)) VerboseFail("Cannot expect null or empty string");
 			if (String.IsNullOrEmpty(actual)) VerboseFail("String is Null or Empty" );
 			if (!actual.EndsWith(expect)) {
@@ -31,7 +31,7 @@ namespace VerboseCSharp.Asserts {
 			}
 		}
 
-		static public void Contains( string expect, string actual ) {
+		public static void Contains( string expect, string actual ) {
 			if (String.IsNullOrEmpty(expect)) VerboseFail("Cannot expect null or empty string");
 			if (String.IsNullOrEmpty(actual)) VerboseFail("String is Null or Empty" );
 			if (!actual.Contains(expect)) {
@@ -40,7 +40,7 @@ namespace VerboseCSharp.Asserts {
 
 		}
 
-		static public void NotContains( string expect, string actual ) {
+		public static void NotContains( string expect, string actual ) {
 			if (String.IsNullOrEmpty(expect)) VerboseFail("Cannot expect null or empty string");
 			if (String.IsNullOrEmpty(actual)) VerboseFail("String is Null or Empty" );
 			if (actual.Contains(expect)) {
@@ -48,13 +48,13 @@ namespace VerboseCSharp.Asserts {
 			}
 		}
 		
-		static public void Empty( string actual ) {
+		public static void IsEmpty( string actual ) {
 			if (!String.IsNullOrEmpty(actual)) {
 				VerboseFail("String is not empty ["+actual+"]");
 			}
 		}
 
-		static public void NotEmpty( string actual ) {
+		public static void IsNotEmpty( string actual ) {
 			if (String.IsNullOrEmpty(actual)) {
 				VerboseFail("String is empty");
 			}

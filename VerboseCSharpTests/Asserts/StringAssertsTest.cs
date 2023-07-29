@@ -58,33 +58,33 @@ namespace VerboseCSharpTests.Asserts {
 		}
 		
 		[TestMethod]
-		public void Empty() {
-			StringAsserts.Empty( (string)null );
-			StringAsserts.Empty( "" );
+		public void IsEmpty() {
+			StringAsserts.IsEmpty( (string)null );
+			StringAsserts.IsEmpty( "" );
 		}
 
 		
 		[TestMethod]
 		[ExpectedException(typeof(VerboseAssertionException))]
 		public void Empty_false() {
-			StringAsserts.Empty( "false" );
+			StringAsserts.IsEmpty( "false" );
 		}
 
 		[TestMethod]
-		public void NotEmpty() {
-			StringAsserts.NotEmpty("Hello");
-		}
-
-		[TestMethod]
-		[ExpectedException(typeof(VerboseAssertionException))]
-		public void NotEmpty_false_forNull() {
-			StringAsserts.NotEmpty((string)null);
+		public void IsNotEmpty() {
+			StringAsserts.IsNotEmpty("Hello");
 		}
 
 		[TestMethod]
 		[ExpectedException(typeof(VerboseAssertionException))]
-		public void NotEmpty_false_forBlank() {
-			StringAsserts.NotEmpty("");
+		public void IsNotEmpty_false_forNull() {
+			StringAsserts.IsNotEmpty((string)null);
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(VerboseAssertionException))]
+		public void IsNotEmpty_false_forBlank() {
+			StringAsserts.IsNotEmpty("");
 		}
 
 	}
