@@ -14,6 +14,7 @@
     <UserSecretsId>70edb541-7ee0-4461-bca7-6e057db968e4</UserSecretsId>
     <Copyright>Copyright (c) 2022 Frederick William Haslam born 1962 in the USA.</Copyright>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/fwhaslam/VerboseCSharp</PackageProjectUrl>
     <PackageReleaseNotes>VeboseAsserts = StringsAreEqual( expect, actual )
 Generic/CollectionAsserts = IsEmpty/IsFirst/IsLast/StartsWith/EndsWith/Contains
@@ -29,8 +30,13 @@ StringAsserts = IsEmpty/StartsWith/EndsWith/Contains
   <ItemGroup>
     <PackageReference Include="DiffPlex" Version="1.7.1" />
   </ItemGroup>
+  
   <ItemGroup>
     <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="README.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
