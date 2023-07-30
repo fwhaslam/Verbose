@@ -14,7 +14,7 @@ Tools to support Verbose Assertion in C-Sharp.
 Verbose Assertion is a technique which provides a huge speedup in test construction.
 
 The key is to represent all the fields of a class as a single string.  This string can 
-be copy+pasted as into a single assertion which then checks ALL fields in the object. 
+be copy+pasted into a single assertion which then verifies ALL fields in the object. 
 When properly supported, Verbose Assertion will let you rapidly build Assertion Coverage.
 
 

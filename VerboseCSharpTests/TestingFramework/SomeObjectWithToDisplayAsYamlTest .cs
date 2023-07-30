@@ -31,8 +31,8 @@ namespace VerboseCSharpTests.TestingFramework {
             // assertions
             VerboseAsserts.StringsAreEqual( 
                 "SomeInt: 4\n"+
-		        "SomeString: hi\n"+
-		        "", YamlParser.ToYamlString(results) );
+                "SomeString: hi\n"+
+                "", YamlParser.ToYamlString(results) );
         }
         
         [TestMethod]
