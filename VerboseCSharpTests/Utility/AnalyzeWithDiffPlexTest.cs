@@ -53,8 +53,8 @@ namespace VerboseCSharpTests.Utility {
             // report
             AreEqual( 
                 "   : some set of strings\n" +
-                "<<-: something deleted\n" +
-                "+>>: an inserted line\n" +
+                "<- : something deleted\n" +
+                " +>: an inserted line\n" +
                 "   : a common line\n" +
                 "old: another line\n" +
                 "new: another line with extra" +
