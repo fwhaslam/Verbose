@@ -1,6 +1,17 @@
+### 2023/07/29 = Release 1.0.1
+
+Changed c# version to 8.  Changed target frameworks to net48 and net6.0.
+
+Symbol for inserted line changed from '+>>' to ' +>'
+
+Symbol for removed line changed from '<<-' to '<- '
+
+Does not change usage, just readability.
+
+
 ### 2023/07/29 = Release 1.0.0
 
-Fixed settings for NuGet packaing.
+Fixed settings for NuGet packaging.
 
 Renamed projects as VerboseCSharp/Tests.
 
@@ -9,7 +20,7 @@ Rebuilt difference engine using DiffPlex.
 Moved all Assert classes into package VerboseCSharp.Asserts.
 
 VerboseAsserts.StringsAreEqual() now produces three elements:
-* a summary of line differences ( added, droped, changed ) which is thrown on assertion failure.
+* a summary of line differences ( added, dropped, changed ) which is thrown on assertion failure.
 * a copyable string in the console, which lets you copy the Actual value and paste it into your test.
 * a detailed line difference report in the console, so you can see exactly what has changed.
 

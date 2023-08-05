@@ -15,6 +15,13 @@ namespace VerboseCSharp.Utility {
 
 		internal static float SIMILARITY_THRESHOLD = 0.3f;
 
+
+		internal static string SAME_MARKER = "   ";
+		internal static string OLD_MARKER = "old";
+		internal static string NEW_MARKER = "new";
+		internal static string ADD_MARKER = " +>";
+		internal static string SUB_MARKER = "<- ";
+
         /// <summary>
 		/// Find differences with DiffPlex.
         /// Print: Summary, Copyable String, and Report.
@@ -43,7 +50,7 @@ namespace VerboseCSharp.Utility {
 				// same as it ever was
                 if (type == ChangeType.Unchanged) {
                     copyList.Add(text);
-					reportList.Add( ("   ", text ) );
+					reportList.Add( (SAME_MARKER,text) );
 					continue;
                 }
                
@@ -51,7 +58,7 @@ namespace VerboseCSharp.Utility {
 				if (type == ChangeType.Inserted) {
 					addSum++;
 					copyList.Add(text);
-					reportList.Add( ("+>>", text ) );
+					reportList.Add( (ADD_MARKER,text) );
 
 					// check for 'modified' condition
 					if (ix>0 && lines[ix-1].Type==ChangeType.Deleted) {
@@ -61,8 +68,8 @@ namespace VerboseCSharp.Utility {
 							addSum--;
 							modSum++;
 
-							reportList[ix-1] = ( "old", lines[ix-1].Text );
-							reportList[ix] = ( "new", text );
+							reportList[ix-1] = (OLD_MARKER,lines[ix-1].Text);
+							reportList[ix] = (NEW_MARKER,text);
 						}
 					}
 					continue;
@@ -71,7 +78,7 @@ namespace VerboseCSharp.Utility {
 				// removals
 				if (type == ChangeType.Deleted) {
 					rmvSum++;
-					reportList.Add( ("<<-", text ) );
+					reportList.Add( (SUB_MARKER,text) );
 					continue;
                 }
 
