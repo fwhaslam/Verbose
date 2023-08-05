@@ -8,7 +8,7 @@ and verbose assertions for assertion coverage.
 
 ## Common Assertions
 
-This package contains the following common asertions:
+This package contains the following common assertions:
 
 StringAsserts:
 * IsEmpty( string:actual )

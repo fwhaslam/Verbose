@@ -1,11 +1,6 @@
 # Tasks
 ============
 
-publish to nuget: https://www.nuget.org/
-https://www.meziantou.net/ensuring-best-practices-for-nuget-packages.htm
-
-Update to build for .net #8 as well as .net 4.7.1
-
 add some kind of 'settings' so that:
 * 'linefeeds' can be handled consistently.
 * can dump 'raw literals' instead of formatted strings
