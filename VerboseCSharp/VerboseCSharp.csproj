@@ -16,10 +16,7 @@
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/fwhaslam/VerboseCSharp</PackageProjectUrl>
-    <PackageReleaseNotes>VeboseAsserts = StringsAreEqual( expect, actual )
-Generic/CollectionAsserts = IsEmpty/IsFirst/IsLast/StartsWith/EndsWith/Contains
-StringAsserts = IsEmpty/StartsWith/EndsWith/Contains
-</PackageReleaseNotes>
+    <PackageReleaseNotes>$(ReleaseNotes)</PackageReleaseNotes>
     <PackageTags>test assert verbose unit integration functional acceptance assertion coverage</PackageTags>
   </PropertyGroup>
 

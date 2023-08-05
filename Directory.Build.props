@@ -14,6 +14,20 @@
     <ProjectKey>VerboseCSharp</ProjectKey>
 
     <LangVersion>8.0</LangVersion>
+
+    <ReleaseNotes>
+# Release 1.0.1
+
+* Changed insert/remove symbols for detailed difference report.
+* Updated frameworks to net48 and net6.0.
+
+# General Usage
+
+API available from package VerboseCSharp.Asserts:
+* VerboseAsserts = StringsAreEqual( expect, actual )
+* Generic/CollectionAsserts = IsEmpty/IsFirst/IsLast/StartsWith/EndsWith/Contains
+* StringAsserts = IsEmpty/StartsWith/EndsWith/Contains
+    </ReleaseNotes>
     
   </PropertyGroup>
 
