@@ -19,9 +19,30 @@ namespace VerboseCSharpTests.Asserts {
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(VerboseAssertionException))]
 		public void StartsWith_false() {
-			StringAsserts.StartsWith("check","false check");
+            try {
+			    StringAsserts.StartsWith("check","false check");
+                Fail("Did not throw exception");
+            }
+            catch ( VerboseAssertionException ex ) {
+                AreEqual( 
+                    "String does not start with expectation [false check]", ex.Message );
+            }
+		}
+
+		[TestMethod]
+		public void StartsWith_multiLine_false() {
+            try {
+			    StringAsserts.StartsWith(
+                    "check",
+                    "false check\nline two\nsomething more"
+                );
+                Fail("Did not throw exception");
+            }
+            catch ( VerboseAssertionException ex ) {
+                AreEqual( 
+                    "String does not start with expectation [false check\nline two\nsomething more]", ex.Message );
+            }
 		}
 
 		[TestMethod]

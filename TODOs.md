@@ -1,6 +1,9 @@
 # Tasks
 ============
 
+Looks like VisualStudio 2022 has improved paste into quotes.
+  Investigate, and add new settings for this option.
+
 add some kind of 'settings' so that:
 * 'linefeeds' can be handled consistently.
 * can dump 'raw literals' instead of formatted strings
